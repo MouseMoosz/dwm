@@ -65,8 +65,9 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *shutdowncmd[]  = {"shutdown", "now", NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *shutdowncmd[]  = { "shutdown", "now", NULL };
+static const char *rebootcmd[]  = { "shutdown", "-r", "now", NULL };
+static const char *termcmd[]  = { "tabbed", "-r", "2", "st", "-w", "''", "-e", "tmux",  NULL };
 static const char *roficmd[] = { "rofi", "-show", "run", NULL};
 
 #include "maximize.c"
@@ -110,6 +111,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ShiftMask,             XK_Escape, spawn,          {.v = shutdowncmd} },
+	{ MODKEY|ShiftMask,             XK_Delete, spawn,          {.v = rebootcmd} },
 };
 
 /* button definitions */
