@@ -3,4 +3,6 @@ nitrogen --restore &
 nm-applet &
 volumeicon &
 lxsession &
-picom &
+udiskie &
+xfce4-clipman &
+slstatus &
